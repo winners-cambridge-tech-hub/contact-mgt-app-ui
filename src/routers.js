@@ -1,16 +1,26 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import ContactManagement from "./app/ContactManagement";
+import dashboard from "./app/contact/dashboard";
+import ContactTable from "./app/contact/ContactTable";
+
 
 const routes = [
     {
         path: "/",
-        redirect: "/contacts"
+        redirect: 'dashboard'
     },
     {
-        name: "contacts",
-        component: ContactManagement,
-        path: "/contacts",
-    }
+        name: "dashboard",
+        component: dashboard,
+        path: "/dashboard",
+        props: (route) => ({
+            page: route.query.page
+        }),
+    },
+    {
+        name: "ContactTable",
+        component: ContactTable,
+        path: "/table",
+    },
 ];
 
 
@@ -21,3 +31,4 @@ const router = createRouter({
 
 
 export default router;
+
